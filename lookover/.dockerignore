@@ -1,0 +1,8 @@
+__pycache__/
+*.pt
+*.mp4
+data/
+models/
+.venv/
+.git/
+data/
