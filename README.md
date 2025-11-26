@@ -1,85 +1,78 @@
+*[English version](README.md) | [Versione italiana](README_IT.md)*
 # FishFlow
 
 <div align="center">
 
-**Sistema Cloud SaaS basato su AI per l'Analisi dei Flussi di Persone nelle Attività Commerciali**
+**AI-Powered Cloud SaaS Platform for People Flow Analysis in Retail Environments**
 
 [![AWS](https://img.shields.io/badge/AWS-Amplify-FF9900?style=flat-square&logo=amazon-aws)](https://aws.amazon.com/amplify/)
 [![React](https://img.shields.io/badge/React-18+-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5+-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Python](https://img.shields.io/badge/Python-3.13+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 
-[Demo Video](#demo) • [Architettura](#architettura) • [Screenshots](#interfaccia) • [Contatti](#contatti)
+[Demo Video](#demo) • [Architecture](#architecture) • [Screenshots](#interface) • [Contact](#contact)
 
 </div>
 
 ---
 
-## Panoramica
+## Overview
 
-FishFlow è una piattaforma cloud-based sviluppata durante il mio tirocinio presso Bagubits, progettata per analizzare i flussi di persone all'interno di spazi commerciali. Il sistema utilizza computer vision e intelligenza artificiale per trasformare video di sorveglianza in dati utili per l'ottimizzazione degli spazi retail, mantenendo il pieno rispetto della privacy (GDPR compliant).
+FishFlow is a cloud-based platform developed during my internship at Bagubits, designed to analyze people flow within commercial spaces. The system uses computer vision and artificial intelligence to transform surveillance footage into actionable insights for retail space optimization, while maintaining full privacy compliance (GDPR compliant).
 
-### Il Problema
+### The Problem
 
-Nel settore della Grande Distribuzione Organizzata, comprendere il comportamento dei clienti negli spazi fisici è fondamentale ma difficile. Le aziende faticano a ottimizzare il layout dei prodotti e misurare l'efficacia delle strategie di marketing in-store, basandosi spesso su intuizioni piuttosto che su dati concreti.
+In the retail sector, understanding customer behavior in physical spaces is crucial but challenging. Companies struggle to optimize product layouts and measure the effectiveness of in-store marketing strategies, often relying on intuition rather than concrete data.
 
-### La Soluzione
+### The Solution
 
-FishFlow elabora i video esistenti dalle telecamere di sorveglianza per fornire:
-- Conteggio automatico delle persone
-- Mappe di calore dei percorsi più frequentati
-- Analisi dei pattern di movimento
-- Rilevamento completamente anonimo (nessun dato biometrico)
+FishFlow processes existing surveillance camera footage to provide:
+- Automatic people counting
+- Heatmaps of most frequented paths
+- Movement pattern analysis
+- Completely anonymous detection (no biometric data)
 
 ---
 
 ## Demo
 
-### Video Dimostrativo
-[Guarda il video demo completo](your-youtube-link) *(3 minuti)*
+### Demo Video
+[Watch full demo video]() 
 
-### Preview Rapida
-![Demo Workflow](screenshots/demo.gif)
 
 ---
 
-## Architettura
+## Architecture
 
-Il sistema è organizzato in tre livelli principali:
+The system is organized in three main layers:
 
-```
-Frontend (React/TypeScript)
-    ↓
-Backend Cloud (AWS Services)
-    ↓
-AI Module (Python/YOLO)
-```
+![Architecture](media/schema.png)
 
-**Stack Tecnologico**
+**Technology Stack**
 
 *Frontend*
-- React 18 con TypeScript
-- TailwindCSS per lo styling
-- AWS Amplify per hosting e deployment
+- React 18 with TypeScript
+- TailwindCSS for styling
+- AWS Amplify for hosting and deployment
 
 *Backend*
-- AWS Cognito (autenticazione)
-- Amazon S3 (storage video)
-- DynamoDB (database NoSQL)
-- AWS Lambda (funzioni serverless)
-- Amazon ECS (orchestrazione container)
+- AWS Cognito (authentication)
+- Amazon S3 (video storage)
+- DynamoDB (NoSQL database)
+- AWS Lambda (serverless functions)
+- Amazon ECS (container orchestration)
 
 *AI/Computer Vision*
-- YOLOv8 per object detection
-- OpenCV per elaborazione video
+- YOLOv8 for object detection
+- OpenCV for video processing
 - Python 3.13
-- Docker per containerizzazione
+- Docker for containerization
 
 ---
 
-## Interfaccia
+## Interface
 
-### Autenticazione e Dashboard
+### Authentication and Dashboard
 
 | Login | Dashboard |
 |-------|-----------|
@@ -103,40 +96,40 @@ AI Module (Python/YOLO)
 
 ---
 
-## Caratteristiche Tecniche
+## Technical Features
 
-### Funzionalità Implementate
+### Implemented Functionality
 
-- Sistema di autenticazione multi-tenant con AWS Cognito
-- Upload e gestione sicura dei video su S3
-- Analisi video con rilevamento persone tramite YOLO
-- Generazione automatica di mappe di calore
-- Dashboard per la gestione dei contenuti
-- API GraphQL per l'integrazione dei servizi
+- Multi-tenant authentication system with AWS Cognito
+- Secure video upload and management on S3
+- Video analysis with people detection using YOLO
+- Automatic heatmap generation
+- Content management dashboard
+- GraphQL API for service integration
 
-### Sfide Tecniche Risolte
+### Technical Challenges Solved
 
-**Scalabilità dell'Elaborazione Video**  
-L'analisi video richiede risorse computazionali significative. Ho implementato una soluzione basata su container Docker orchestrati da Amazon ECS con auto-scaling, permettendo di processare video da multipli punti vendita in parallelo.
+**Video Processing Scalability**  
+Video analysis requires significant computational resources. I implemented a solution based on Docker containers orchestrated by Amazon ECS with auto-scaling, enabling parallel processing of videos from multiple stores.
 
-**Privacy e Conformità GDPR**  
-Per rispettare le stringenti regolamentazioni europee, il sistema utilizza YOLO per il rilevamento posizionale anonimo, senza alcun tipo di riconoscimento biometrico o memorizzazione di dati identificativi.
+**Privacy and GDPR Compliance**  
+To meet strict European regulations, the system uses YOLO for anonymous positional detection, without any biometric recognition or storage of identifying data.
 
-**Ottimizzazione dei Costi Cloud**  
-L'elaborazione continua avrebbe generato costi elevati. Ho implementato un sistema a trigger manuale combinato con architettura serverless, pagando solo per le risorse effettivamente utilizzate durante l'analisi.
+**Cloud Cost Optimization**  
+Continuous processing would generate high costs. I implemented a manual trigger system combined with serverless architecture, paying only for resources actually used during analysis.
 
 ---
 
-## Come Funziona
+## How It Works
 
-1. L'utente carica un video di sorveglianza tramite l'interfaccia web
-2. Il file viene salvato su Amazon S3 e registrato in DynamoDB
-3. L'utente avvia manualmente l'analisi dalla dashboard
-4. Un container Docker su ECS elabora il video utilizzando YOLO
-5. Vengono generati JSON con coordinate, frame annotati e heatmap
-6. I risultati sono disponibili per la visualizzazione nella dashboard
+1. User uploads a surveillance video through the web interface
+2. File is saved to Amazon S3 and registered in DynamoDB
+3. User manually starts analysis from the dashboard
+4. A Docker container on ECS processes the video using YOLO
+5. JSON with coordinates, annotated frames, and heatmaps are generated
+6. Results are available for viewing in the dashboard
 
-### Esempio di Output JSON
+### Sample JSON Output
 
 ```json
 {
@@ -144,50 +137,56 @@ L'elaborazione continua avrebbe generato costi elevati. Ho implementato un siste
     [0, 209.8, 969.0, 126.2, 623.4, 0.0],
     [1, 210.1, 969.6, 126.3, 623.5, 0.04]
   ],
+  "statistics": {
+    "total_people_detected": 42,
+    "average_dwell_time": "3m 24s"
+  }
 }
 ```
-*Formato: [frame, x, y, width, height, timestamp]*
+*Format: [frame, x, y, width, height, timestamp]*
+
+
 
 ---
-
-
 
 ## Roadmap
 
-**Versione Attuale (v1.0 - Demo Funzionante)**
-- Sistema completo di autenticazione
-- Upload e gestione video
-- Analisi AI con generazione risultati
-- Dashboard base operativa
+**Current Version (v1.0 - Working Demo)**
+- Complete authentication system
+- Video upload and management
+- AI analysis with result generation
+- Operational base dashboard
 
-**Sviluppi Futuri**
-- Dashboard analytics interattiva con grafici temporali
-- Export automatico di report in PDF/CSV
-- Supporto per analisi multi-camera sincronizzata
-- Sistema di notifiche real-time
-- Analisi predittiva dei flussi
+**Future Development**
+- Interactive analytics dashboard with temporal graphs
+- Automatic report export in PDF/CSV
+- Support for synchronized multi-camera analysis
+- Real-time notification system
+- Predictive flow analysis
 
-
-## Contesto Accademico
-
-**Tesi di Laurea Triennale in Informatica**
-
-Università degli Studi di Torino - Dipartimento di Informatica  
-Anno Accademico 2024/2025
-
-**Candidato:** Jean Roland Fabrizio Agbonson  
-**Relatore:** Prof.ssa Claudia Picardi  
-**Azienda:** Bagubits (tirocinio curriculare)
 
 ---
 
-## Note
+## Academic Context
 
-Questo progetto rappresenta una versione dimostrativa funzionante sviluppata come tesi di laurea. Per l'utilizzo è necessario un account AWS configurato con i servizi richiesti. Il sistema è progettato con un'architettura modulare che permette future estensioni e ottimizzazioni per un eventuale utilizzo in produzione.
+**Bachelor's Thesis in Computer Science**
+
+University of Turin - Department of Computer Science  
+Academic Year 2024/2025
+
+**Candidate:** Jean Roland Fabrizio Agbonson  
+**Supervisor:** Prof. Claudia Picardi  
+**Company:** Bagubits (curricular internship)
 
 ---
 
-## Contatti
+## Notes
+
+This project represents a working demo version developed as a bachelor's thesis. Usage requires an AWS account configured with the required services. The system is designed with a modular architecture that allows for future extensions and optimizations for potential production use.
+
+---
+
+## Contact
 
 **Jean Roland Fabrizio Agbonson**
 
@@ -195,18 +194,19 @@ Questo progetto rappresenta una versione dimostrativa funzionante sviluppata com
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)]([your-linkedin-url](https://www.linkedin.com/in/fabrizio-agbonson-1b7960234/))
 [![Email](https://img.shields.io/badge/Email-Contact-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:fabriagbonson@gmail.com)
 
+
 ---
 
-## Ringraziamenti
+## Acknowledgments
 
-Ringrazio la Prof.ssa Claudia Picardi per la supervisione accademica, il team di Bagubits per l'opportunità di tirocinio e la fiducia, e la community open source per gli strumenti utilizzati nello sviluppo di questo progetto.
+I thank Prof. Claudia Picardi for academic supervision, the Bagubits team for the internship opportunity and trust, and the open source community for the tools used in developing this project.
 
 ---
 
 <div align="center">
 
-Se questo progetto ti interessa, lascia una stella su GitHub
+If you find this project interesting, leave a star on GitHub
 
-**Sviluppato per innovare il settore retail attraverso l'intelligenza artificiale**
+**Developed to innovate the retail sector through artificial intelligence**
 
 </div>
