@@ -186,7 +186,7 @@ Questo progetto rappresenta una versione dimostrativa funzionante sviluppata com
 **Jean Roland Fabrizio Agbonson**
 
 [![GitHub](https://img.shields.io/badge/GitHub-smilefabri-181717?style=flat-square&logo=github)](https://github.com/smilefabri)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)]([your-linkedin-url](https://www.linkedin.com/in/fabrizio-agbonson-1b7960234/))
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/fabrizio-agbonson-1b7960234/)
 [![Email](https://img.shields.io/badge/Email-Contact-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:fabriagbonson@gmail.com)
 
 ---
