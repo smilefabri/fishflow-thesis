@@ -83,23 +83,24 @@ AI Module (Python/YOLO)
 
 | Login | Dashboard |
 |-------|-----------|
-| ![Login](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) |
+| ![Login](media/login_page.png) | ![Dashboard](media/dashboard.png) |
 
 ### Gestione Video
 
 | Caricamento | Lista Video | Anteprima |
 |------------|-------------|-----------|
-| ![Upload](screenshots/upload-video.png) | ![List](screenshots/video-list.png) | ![Preview](screenshots/video-preview.png) |
+| ![Upload](media/load_file.png) | ![List](media/video_list.png
+) | ![Preview](media/video.png) |
 
 ### Risultati dell'Analisi
 
-![Analysis Results](screenshots/analysis-results.png)
+![Analysis Results](media/heatmap.png)
 
 **Output generati:**
 
 | Frame Annotati | Mappa di Calore |
 |----------------|-----------------|
-| ![Annotated Frame](screenshots/annotated-frame.png) | ![Heatmap](screenshots/heatmap.png) |
+| ![Annotated Frame](media/box.png) | ![Heatmap](screenshots/heatmap.jpg) |
 
 ---
 
@@ -144,37 +145,13 @@ L'elaborazione continua avrebbe generato costi elevati. Ho implementato un siste
     [0, 209.8, 969.0, 126.2, 623.4, 0.0],
     [1, 210.1, 969.6, 126.3, 623.5, 0.04]
   ],
-  "statistics": {
-    "total_people_detected": 42,
-    "average_dwell_time": "3m 24s"
-  }
 }
 ```
 *Formato: [frame, x, y, width, height, timestamp]*
 
 ---
 
-## Struttura del Progetto
 
-```
-fishflow-thesis/
-├── src/                          # Frontend React/TypeScript
-│   ├── module/auth/              # Componenti autenticazione
-│   ├── module/home/              # Dashboard e interfaccia principale
-│   └── App.tsx
-├── amplify/                      # Configurazione AWS
-│   ├── data/                     # Lambda functions (mutazioni GraphQL)
-│   └── storage/                  # Lambda functions (trigger S3)
-├── ai-module/                    # Modulo Python per analisi AI
-│   ├── main.py
-│   ├── video_processing.py
-│   ├── track_model.py
-│   ├── visualize_tracking.py
-│   └── Dockerfile
-└── README.md
-```
-
----
 
 ## Roadmap
 
@@ -191,19 +168,6 @@ fishflow-thesis/
 - Sistema di notifiche real-time
 - Analisi predittiva dei flussi
 
----
-
-## Metriche del Progetto
-
-| Metrica | Valore |
-|---------|--------|
-| Durata Sviluppo | 4 mesi |
-| Linee di Codice | ~8,000 |
-| Servizi AWS Integrati | 7 |
-| Tecnologie Utilizzate | 15+ |
-| Accuratezza Rilevamento | ~92% |
-
----
 
 ## Contesto Accademico
 
@@ -229,8 +193,8 @@ Questo progetto rappresenta una versione dimostrativa funzionante sviluppata com
 **Jean Roland Fabrizio Agbonson**
 
 [![GitHub](https://img.shields.io/badge/GitHub-smilefabri-181717?style=flat-square&logo=github)](https://github.com/smilefabri)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)](your-linkedin-url)
-[![Email](https://img.shields.io/badge/Email-Contact-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:your-email@example.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)]([your-linkedin-url](https://www.linkedin.com/in/fabrizio-agbonson-1b7960234/))
+[![Email](https://img.shields.io/badge/Email-Contact-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:fabriagbonson@gmail.com)
 
 ---
 
