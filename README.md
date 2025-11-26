@@ -89,8 +89,7 @@ AI Module (Python/YOLO)
 
 | Caricamento | Lista Video | Anteprima |
 |------------|-------------|-----------|
-| ![Upload](media/load_file.png) | ![List](media/video_list.png
-) | ![Preview](media/video.png) |
+| ![Upload](media/load_file.png) | ![List](media/video_list.png) | ![Preview](media/video.png) |
 
 ### Risultati dell'Analisi
 
@@ -100,7 +99,7 @@ AI Module (Python/YOLO)
 
 | Frame Annotati | Mappa di Calore |
 |----------------|-----------------|
-| ![Annotated Frame](media/box.png) | ![Heatmap](screenshots/heatmap.jpg) |
+| ![Annotated Frame](media/box.png) | ![Heatmap](media/heatmap.jpg) |
 
 ---
 
