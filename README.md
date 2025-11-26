@@ -1,360 +1,249 @@
-# 🐟 FishFlow
+# FishFlow
 
 <div align="center">
-
-![FishFlow Banner](screenshots/banner.png)
 
 **Sistema Cloud SaaS basato su AI per l'Analisi dei Flussi di Persone nelle Attività Commerciali**
 
-[![AWS](https://img.shields.io/badge/AWS-Amplify-FF9900?style=for-the-badge&logo=amazon-aws)](https://aws.amazon.com/amplify/)
-[![React](https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Python](https://img.shields.io/badge/Python-3.13+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![AWS](https://img.shields.io/badge/AWS-Amplify-FF9900?style=flat-square&logo=amazon-aws)](https://aws.amazon.com/amplify/)
+[![React](https://img.shields.io/badge/React-18+-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5+-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Python](https://img.shields.io/badge/Python-3.13+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 
-[Demo Video](#-demo) • [Architettura](#-architettura) • [Screenshots](#-interfaccia-utente) • [Contatti](#-contatti)
+[Demo Video](#demo) • [Architettura](#architettura) • [Screenshots](#interfaccia) • [Contatti](#contatti)
 
 </div>
 
 ---
 
-## 🎯 Il Problema
+## Panoramica
 
-Nel settore retail, i negozi della Grande Distribuzione Organizzata (GDO) hanno difficoltà a:
-- **Comprendere il comportamento dei clienti** negli spazi fisici
-- **Ottimizzare il layout** dei prodotti in base ai flussi reali
-- **Misurare l'efficacia** delle strategie di marketing in-store
-- **Analizzare i dati video** in modo veloce e scalabile
+FishFlow è una piattaforma cloud-based sviluppata durante il mio tirocinio presso Bagubits, progettata per analizzare i flussi di persone all'interno di spazi commerciali. Il sistema utilizza computer vision e intelligenza artificiale per trasformare video di sorveglianza in dati utili per l'ottimizzazione degli spazi retail, mantenendo il pieno rispetto della privacy (GDPR compliant).
 
-**Il risultato?** Decisioni basate su intuizioni invece che su dati concreti.
+### Il Problema
 
-## 💡 La Soluzione
+Nel settore della Grande Distribuzione Organizzata, comprendere il comportamento dei clienti negli spazi fisici è fondamentale ma difficile. Le aziende faticano a ottimizzare il layout dei prodotti e misurare l'efficacia delle strategie di marketing in-store, basandosi spesso su intuizioni piuttosto che su dati concreti.
 
-FishFlow trasforma i video di sorveglianza esistenti in **insights azionabili** attraverso l'intelligenza artificiale, fornendo:
+### La Soluzione
 
-✅ **Conteggio automatico** delle persone in tempo reale  
-✅ **Mappe di calore** dei percorsi più frequentati  
-✅ **Analisi dei pattern** di movimento e permanenza  
-✅ **100% conforme GDPR** - rilevamento completamente anonimo  
-✅ **Zero hardware aggiuntivo** - utilizza le telecamere esistenti  
-
-### 📊 Impatto Business
-- ⏱️ **Riduzione 80%** del tempo di analisi manuale
-- 📈 **+35% efficienza** nell'ottimizzazione degli spazi
-- 🔒 **Privacy garantita** - nessun dato biometrico memorizzato
-- ☁️ **Scalabile** - da 1 a 100+ punti vendita
+FishFlow elabora i video esistenti dalle telecamere di sorveglianza per fornire:
+- Conteggio automatico delle persone
+- Mappe di calore dei percorsi più frequentati
+- Analisi dei pattern di movimento
+- Rilevamento completamente anonimo (nessun dato biometrico)
 
 ---
 
-## 🚀 Demo
+## Demo
 
-### 🎥 Video Dimostrativo
-> 🎬 [**Guarda il video demo completo su YouTube**](your-youtube-link)  
-> *Durata: 3 minuti - Mostra il flusso completo dall'upload all'analisi*
+### Video Dimostrativo
+[Guarda il video demo completo](your-youtube-link) *(3 minuti)*
 
-### ⚡ Quick Preview
-![Demo GIF](screenshots/demo.gif)
-*Upload video → Analisi automatica → Risultati visualizzati*
+### Preview Rapida
+![Demo Workflow](screenshots/demo.gif)
 
 ---
 
-## 🏗️ Architettura
+## Architettura
 
-<div align="center">
+Il sistema è organizzato in tre livelli principali:
 
-```mermaid
-graph TB
-    A[👤 Utente] -->|Upload Video| B[React Frontend]
-    B -->|Auth| C[AWS Cognito]
-    B -->|Upload| D[Amazon S3]
-    D -->|Trigger| E[AWS Lambda]
-    E -->|Registra| F[DynamoDB]
-    E -->|Avvia| G[ECS Container]
-    G -->|YOLO Analysis| H[Python AI Module]
-    H -->|Risultati| D
-    D -->|Visualizza| B
-    
-    style A fill:#4CAF50
-    style B fill:#61DAFB
-    style G fill:#FF9900
-    style H fill:#3776AB
+```
+Frontend (React/TypeScript)
+    ↓
+Backend Cloud (AWS Services)
+    ↓
+AI Module (Python/YOLO)
 ```
 
-</div>
+**Stack Tecnologico**
 
-### 🎨 Stack Tecnologico
+*Frontend*
+- React 18 con TypeScript
+- TailwindCSS per lo styling
+- AWS Amplify per hosting e deployment
 
-<table>
-<tr>
-<td valign="top" width="50%">
+*Backend*
+- AWS Cognito (autenticazione)
+- Amazon S3 (storage video)
+- DynamoDB (database NoSQL)
+- AWS Lambda (funzioni serverless)
+- Amazon ECS (orchestrazione container)
 
-**Frontend**
-- ⚛️ React 18 + TypeScript
-- 🎨 TailwindCSS
-- 🔐 AWS Amplify Auth
-- 📊 Recharts (visualizzazioni)
-
-</td>
-<td valign="top" width="50%">
-
-**Backend & AI**
-- ☁️ AWS Serverless (Lambda, S3, DynamoDB)
-- 🐳 Docker + Amazon ECS
-- 🤖 YOLOv8 (Computer Vision)
-- 🐍 Python + OpenCV + NumPy
-
-</td>
-</tr>
-</table>
+*AI/Computer Vision*
+- YOLOv8 per object detection
+- OpenCV per elaborazione video
+- Python 3.13
+- Docker per containerizzazione
 
 ---
 
-## 💻 Interfaccia Utente
+## Interfaccia
 
-<details open>
-<summary><b>🔐 Sistema di Autenticazione</b></summary>
+### Autenticazione e Dashboard
 
-![Login](screenshots/login.png)
-*Autenticazione sicura multi-tenant con AWS Cognito*
+| Login | Dashboard |
+|-------|-----------|
+| ![Login](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) |
 
-</details>
-
-<details open>
-<summary><b>📊 Dashboard Principale</b></summary>
-
-![Dashboard](screenshots/dashboard.png)
-*Vista centralizzata per gestire video e analisi*
-
-</details>
-
-<details>
-<summary><b>📹 Gestione Video</b></summary>
+### Gestione Video
 
 | Caricamento | Lista Video | Anteprima |
 |------------|-------------|-----------|
 | ![Upload](screenshots/upload-video.png) | ![List](screenshots/video-list.png) | ![Preview](screenshots/video-preview.png) |
 
-</details>
+### Risultati dell'Analisi
 
-<details>
-<summary><b>🔬 Analisi e Risultati</b></summary>
+![Analysis Results](screenshots/analysis-results.png)
 
-### Lista Analisi Disponibili
-![Analysis List](screenshots/analysis-list.png)
+**Output generati:**
 
-### Risultati Completi
-![Results](screenshots/analysis-results.png)
-
-### Output Generati
-
-<table>
-<tr>
-<td width="50%">
-
-**Frame Annotati**  
-![Annotated](screenshots/annotated-frame.png)
-*Bounding box su persone rilevate*
-
-</td>
-<td width="50%">
-
-**Heatmap**  
-![Heatmap](screenshots/heatmap.png)
-*Zone più frequentate evidenziate*
-
-</td>
-</tr>
-</table>
-
-</details>
+| Frame Annotati | Mappa di Calore |
+|----------------|-----------------|
+| ![Annotated Frame](screenshots/annotated-frame.png) | ![Heatmap](screenshots/heatmap.png) |
 
 ---
 
-## 🎯 Caratteristiche Tecniche Chiave
+## Caratteristiche Tecniche
 
-### 🏆 Achievements Tecnici
+### Funzionalità Implementate
 
-| Feature | Implementazione | Beneficio |
-|---------|----------------|-----------|
-| **Privacy-First** | YOLO object detection senza riconoscimento facciale | 100% GDPR compliant |
-| **Serverless** | AWS Lambda + ECS auto-scaling | Pay-per-use, costi ottimizzati |
-| **Real-time Processing** | Container Docker ottimizzato | Analisi video in <5min per 10min di footage |
-| **Multi-tenancy** | Cognito User Pools + DynamoDB isolation | Supporto infiniti clienti |
+- Sistema di autenticazione multi-tenant con AWS Cognito
+- Upload e gestione sicura dei video su S3
+- Analisi video con rilevamento persone tramite YOLO
+- Generazione automatica di mappe di calore
+- Dashboard per la gestione dei contenuti
+- API GraphQL per l'integrazione dei servizi
 
-### 🛠️ Sfide Risolte
+### Sfide Tecniche Risolte
 
-1. **Elaborazione Video Scalabile**
-   - Problema: Analisi video richiede alte risorse computazionali
-   - Soluzione: Containerizzazione Docker + ECS con auto-scaling dinamico
+**Scalabilità dell'Elaborazione Video**  
+L'analisi video richiede risorse computazionali significative. Ho implementato una soluzione basata su container Docker orchestrati da Amazon ECS con auto-scaling, permettendo di processare video da multipli punti vendita in parallelo.
 
-2. **Privacy & Compliance**
-   - Problema: Regolamentazioni GDPR stringenti sul riconoscimento persone
-   - Soluzione: Solo tracking posizionale anonimo, zero dati biometrici
+**Privacy e Conformità GDPR**  
+Per rispettare le stringenti regolamentazioni europee, il sistema utilizza YOLO per il rilevamento posizionale anonimo, senza alcun tipo di riconoscimento biometrico o memorizzazione di dati identificativi.
 
-3. **Costi Cloud Ottimizzati**
-   - Problema: Elaborazione continua = costi elevati
-   - Soluzione: Trigger manuale + serverless = paghi solo quando analisi
+**Ottimizzazione dei Costi Cloud**  
+L'elaborazione continua avrebbe generato costi elevati. Ho implementato un sistema a trigger manuale combinato con architettura serverless, pagando solo per le risorse effettivamente utilizzate durante l'analisi.
 
 ---
 
-## 📦 Struttura del Progetto
+## Come Funziona
 
-```
-fishflow-thesis/
-├── 📱 Frontend (React + TypeScript)
-│   ├── src/
-│   │   ├── module/auth/          # Sistema autenticazione
-│   │   ├── module/home/          # Dashboard & UI
-│   │   └── App.tsx               # Entry point
-│   └── amplify/                  # AWS config
-│
-├── 🤖 AI Module (Python)
-│   ├── main.py                   # Orchestrazione analisi
-│   ├── video_processing.py       # Elaborazione frame
-│   ├── track_model.py            # YOLO integration
-│   ├── visualize_tracking.py     # Generazione heatmap
-│   └── Dockerfile                # Container definition
-│
-└── ☁️ AWS Infrastructure
-    ├── Lambda Functions          # Serverless logic
-    ├── S3 Buckets               # Video storage
-    ├── DynamoDB Tables          # Metadata DB
-    └── ECS Tasks                # AI processing
-```
+1. L'utente carica un video di sorveglianza tramite l'interfaccia web
+2. Il file viene salvato su Amazon S3 e registrato in DynamoDB
+3. L'utente avvia manualmente l'analisi dalla dashboard
+4. Un container Docker su ECS elabora il video utilizzando YOLO
+5. Vengono generati JSON con coordinate, frame annotati e heatmap
+6. I risultati sono disponibili per la visualizzazione nella dashboard
 
----
+### Esempio di Output JSON
 
-## 📊 Output dell'Analisi
-
-### 1️⃣ JSON Strutturato
 ```json
 {
   "person_1": [
-    [frame_0, x, y, width, height, timestamp],
-    [frame_1, x, y, width, height, timestamp],
-    ...
+    [0, 209.8, 969.0, 126.2, 623.4, 0.0],
+    [1, 210.1, 969.6, 126.3, 623.5, 0.04]
   ],
-  "person_2": [...],
   "statistics": {
     "total_people_detected": 42,
-    "average_dwell_time": "3m 24s",
-    "peak_hour": "14:00-15:00"
+    "average_dwell_time": "3m 24s"
   }
 }
 ```
-
-### 2️⃣ Visualizzazioni
-- 📹 **Frame annotati** con bounding boxes
-- 🗺️ **Heatmap** delle zone ad alto traffico
-- 📈 **Grafici temporali** (roadmap futura)
+*Formato: [frame, x, y, width, height, timestamp]*
 
 ---
 
-## ✅ Stato del Progetto
+## Struttura del Progetto
 
-### Implementato (v1.0 - Demo)
-- [x] Sistema di autenticazione multi-tenant
-- [x] Upload e gestione video cloud
-- [x] Analisi AI con YOLO
-- [x] Rilevamento persone anonimo
-- [x] Generazione heatmap
-- [x] Dashboard funzionante
-- [x] API GraphQL complete
-
-### 🚧 Roadmap Futura
-- [ ] Dashboard analytics interattiva
-- [ ] Export report PDF/CSV
-- [ ] Supporto multi-camera sincronizzata
-- [ ] Analisi predittiva con ML
-- [ ] Notifiche real-time
-- [ ] Mobile app (React Native)
+```
+fishflow-thesis/
+├── src/                          # Frontend React/TypeScript
+│   ├── module/auth/              # Componenti autenticazione
+│   ├── module/home/              # Dashboard e interfaccia principale
+│   └── App.tsx
+├── amplify/                      # Configurazione AWS
+│   ├── data/                     # Lambda functions (mutazioni GraphQL)
+│   └── storage/                  # Lambda functions (trigger S3)
+├── ai-module/                    # Modulo Python per analisi AI
+│   ├── main.py
+│   ├── video_processing.py
+│   ├── track_model.py
+│   ├── visualize_tracking.py
+│   └── Dockerfile
+└── README.md
+```
 
 ---
 
-## 📈 Metriche del Progetto
+## Roadmap
+
+**Versione Attuale (v1.0 - Demo Funzionante)**
+- Sistema completo di autenticazione
+- Upload e gestione video
+- Analisi AI con generazione risultati
+- Dashboard base operativa
+
+**Sviluppi Futuri**
+- Dashboard analytics interattiva con grafici temporali
+- Export automatico di report in PDF/CSV
+- Supporto per analisi multi-camera sincronizzata
+- Sistema di notifiche real-time
+- Analisi predittiva dei flussi
+
+---
+
+## Metriche del Progetto
 
 | Metrica | Valore |
 |---------|--------|
-| **Durata Sviluppo** | 4 mesi (tirocinio) |
-| **Linee di Codice** | ~8,000+ |
-| **Tecnologie Integrate** | 15+ |
-| **Servizi AWS Utilizzati** | 7 (Amplify, Cognito, S3, DynamoDB, Lambda, ECS, ECR) |
-| **Accuratezza YOLO** | ~92% su video test |
-| **Tempo Medio Analisi** | <5min per 10min di video |
+| Durata Sviluppo | 4 mesi |
+| Linee di Codice | ~8,000 |
+| Servizi AWS Integrati | 7 |
+| Tecnologie Utilizzate | 15+ |
+| Accuratezza Rilevamento | ~92% |
 
 ---
 
-## 🎓 Contesto Accademico
+## Contesto Accademico
 
 **Tesi di Laurea Triennale in Informatica**
 
-📚 **Titolo**: Sistema Cloud SaaS basato su AI per l'Analisi dei Flussi di Persone nelle Attività Commerciali
+Università degli Studi di Torino - Dipartimento di Informatica  
+Anno Accademico 2024/2025
 
-👨‍🎓 **Candidato**: Jean Roland Fabrizio Agbonson  
-👩‍🏫 **Relatore**: Prof.ssa Claudia Picardi  
-🏛️ **Università**: Università degli Studi di Torino - Dipartimento di Informatica  
-📅 **Anno Accademico**: 2024/2025  
-🏢 **Azienda Ospitante**: Bagubits (tirocinio curriculare)
-
----
-
-## 💬 Feedback
-
-> *"FishFlow dimostra un'eccellente integrazione tra AI, cloud computing e design moderno. Un progetto ambizioso che affronta problemi reali del settore retail."*  
-> — Prof.ssa Claudia Picardi
+**Candidato:** Jean Roland Fabrizio Agbonson  
+**Relatore:** Prof.ssa Claudia Picardi  
+**Azienda:** Bagubits (tirocinio curriculare)
 
 ---
 
-## 🤝 Contribuire
+## Note
 
-Questo è un progetto di tesi, ma feedback e suggerimenti sono benvenuti!
-
-1. 🍴 Fork del repository
-2. 🌿 Crea un branch (`git checkout -b feature/improvement`)
-3. 💾 Commit delle modifiche (`git commit -m 'Add improvement'`)
-4. 📤 Push al branch (`git push origin feature/improvement`)
-5. 🔄 Apri una Pull Request
+Questo progetto rappresenta una versione dimostrativa funzionante sviluppata come tesi di laurea. Per l'utilizzo è necessario un account AWS configurato con i servizi richiesti. Il sistema è progettato con un'architettura modulare che permette future estensioni e ottimizzazioni per un eventuale utilizzo in produzione.
 
 ---
 
-## 📄 Licenza
-
-Questo progetto è stato sviluppato come tesi di laurea presso l'Università degli Studi di Torino.  
-Per informazioni sull'utilizzo o riutilizzo del codice, contattami.
-
----
-
-## 📧 Contatti
-
-<div align="center">
+## Contatti
 
 **Jean Roland Fabrizio Agbonson**
 
-[![GitHub](https://img.shields.io/badge/GitHub-smilefabri-181717?style=for-the-badge&logo=github)](https://github.com/smilefabri)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](your-linkedin-url)
-[![Email](https://img.shields.io/badge/Email-Contact-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your-email@example.com)
-[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-4CAF50?style=for-the-badge&logo=google-chrome&logoColor=white)](your-portfolio-url)
-
-</div>
+[![GitHub](https://img.shields.io/badge/GitHub-smilefabri-181717?style=flat-square&logo=github)](https://github.com/smilefabri)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)](your-linkedin-url)
+[![Email](https://img.shields.io/badge/Email-Contact-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:your-email@example.com)
 
 ---
 
-## 🙏 Ringraziamenti
+## Ringraziamenti
 
-Un sentito ringraziamento a:
-- 👩‍🏫 **Prof.ssa Claudia Picardi** - Per la supervisione e il supporto accademico
-- 🏢 **Team Bagubits** - Per l'opportunità di tirocinio e la fiducia
-- 👥 **Community Open Source** - Per gli strumenti e le librerie utilizzate
-- 💻 **Stack Overflow** - Per il supporto tecnico durante lo sviluppo
+Ringrazio la Prof.ssa Claudia Picardi per la supervisione accademica, il team di Bagubits per l'opportunità di tirocinio e la fiducia, e la community open source per gli strumenti utilizzati nello sviluppo di questo progetto.
 
 ---
 
 <div align="center">
 
-### ⭐ Se questo progetto ti è piaciuto, lascia una stella!
+Se questo progetto ti interessa, lascia una stella su GitHub
 
-**Sviluppato con ❤️ per innovare il settore retail attraverso l'AI**
-
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=smilefabri.fishflow-thesis)
+**Sviluppato per innovare il settore retail attraverso l'intelligenza artificiale**
 
 </div>
